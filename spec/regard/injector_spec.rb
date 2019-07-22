@@ -8,7 +8,7 @@ describe Regard::Modules::Injector do
     class Bar < Regard::Modules::Injector ; end
   end
 
-  it 'has foo bar classes' do
+  it 'has Foo Bar modules' do
     expect(Regard::Modules::Injector.modules).to include Foo
     expect(Regard::Modules::Injector.modules).to include Bar
   end
