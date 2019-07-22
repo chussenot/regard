@@ -4,3 +4,6 @@
 # Add script dir to load path
 $:.unshift File.dirname(__FILE__)
 require 'regard'
+require 'regard/cli'
+
+Regard::CLI.start!
