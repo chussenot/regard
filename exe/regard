@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Add script dir to load path
+$:.unshift File.dirname(__FILE__)
+require 'regard'
