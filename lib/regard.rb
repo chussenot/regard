@@ -34,4 +34,30 @@ module Regard
     end
   end
 
+  class Audit
+    attr_accessor :log
+
+    def initialize(url, logger = nil)
+      Docker.url = url unless url.nil?
+      modules = []
+      modules.push File.expand_path('regard/modules', File.dirname(__FILE__))
+      failed = load_modules(failed, modules, 'discover')
+    end
+
+    private
+
+    def load_modules(failed, modules, name)
+      modules.each do |dir|
+        Dir["#{dir}/#{name}/*.rb"].each do |file|
+          begin
+            require file
+          rescue SyntaxError => e
+            failed << file
+          end
+        end
+      end
+      failed
+    end
+
+  end
 end
